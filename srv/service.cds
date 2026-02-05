@@ -15,21 +15,31 @@ service accessPageInternalSrv {
 @requires: 'token-authenticated'
 service accessPageExternalSrv {
   entity Products as projection on my.Products {
+    ID,
     productId,
     name,
     price,
     Currency
   };
   
+  entity Purchases as projection on my.Purchases {
+    ID,
+    quantity,
+    date,
+    product
+  };
+
   entity Mangel as projection on my.Mangel {
     istQuantity,
-    sollQuantity,
     differenceQuantity
   };
 
   entity PurchaseTokens as projection on my.PurchaseTokens {
     token,
-    purchaseId
+    expires_at,
+    revoked,
+    created_on,
+    created_by
   };
 }
 

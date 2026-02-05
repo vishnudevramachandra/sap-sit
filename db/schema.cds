@@ -29,7 +29,7 @@ entity Products : cuid {
 
 @assert.unique: { purchaseId: [purchaseId] }
 entity Purchases : cuid {
-  purchaseId: Integer @mandatory;
+  purchaseId: Association to PurchaseTokens @mandatory;
   quantity: Integer;
   date: Date;
   product: Association to Products;
@@ -39,8 +39,7 @@ entity Purchases : cuid {
 
 entity Mangel : cuid {
   istQuantity: Integer;
-  sollQuantity: Integer;
-  differenceQuantity: Integer = (sollQuantity - istQuantity) stored;
+  differenceQuantity: Integer = (istQuantity - purchase.quantity) stored;
   purchase: Association to Purchases;
   product: Association to Products;
 }
@@ -48,5 +47,8 @@ entity Mangel : cuid {
 @assert.unique: { token: [token] }
 entity PurchaseTokens : cuid {
   token: String(100) @mandatory;
-  purchaseId: Association to Purchases;
+  expires_at: DateTime;
+  revoked: Boolean;
+  created_on: DateTime;
+  created_by: Association to Buyers;
 }
