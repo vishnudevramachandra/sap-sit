@@ -45,3 +45,8 @@ entity Mangel : cuid {
   product: Association to Products;
 }
 
+@assert.unique: { token: [token] }
+entity PurchaseTokens : cuid {
+  token: String(100) @mandatory;
+  purchaseId: Association to Purchases;
+}
