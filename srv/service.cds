@@ -40,6 +40,7 @@ service accessPageExternalSrv {
     expires_at,
     revoked,
     confirmed,
+    linkUsed,
     created_on,
     created_by
   };

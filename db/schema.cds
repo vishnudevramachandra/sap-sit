@@ -51,6 +51,7 @@ entity PurchaseTokens : cuid {
   expires_at: DateTime;
   revoked: Boolean;
   confirmed: Boolean;
+  linkUsed: Boolean;
   created_on: DateTime;
   created_by: Association to Buyers;
 }
