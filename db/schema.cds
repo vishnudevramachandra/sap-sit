@@ -27,7 +27,6 @@ entity Products : cuid {
   Currency: Currency;
 }
 
-@assert.unique: { purchaseId: [purchaseId] }
 entity Purchases : cuid {
   orderId: Association to Order @mandatory;
   quantity: Integer;
@@ -37,7 +36,7 @@ entity Purchases : cuid {
 
 entity Mangel : cuid {
   istQuantity: Integer;
-  differenceQuantity: Integer = (istQuantity - purchase.quantity) stored;
+  differenceQuantity: Integer = (istQuantity - purchase.quantity);
   purchase: Association to Purchases;
   product: Association to Products;
   ConfirmedQuantity: Integer;
