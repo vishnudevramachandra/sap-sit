@@ -50,3 +50,9 @@ service accessPageExternalSrv {
 service tokenGenerationSrv {
   function generateToken(purchaseId: Integer) returns String;
 }
+
+@path: '/service/delivery'
+@requires: 'authenticated-user'
+service deliverySrv {
+  entity Delivery as projection on my.Delivery;
+}
