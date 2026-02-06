@@ -31,7 +31,8 @@ service accessPageExternalSrv {
 
   entity Mangel as projection on my.Mangel {
     istQuantity,
-    differenceQuantity
+    differenceQuantity,
+    ConfirmedQuantity
   };
 
   entity PurchaseTokens as projection on my.PurchaseTokens {

@@ -42,6 +42,7 @@ entity Mangel : cuid {
   differenceQuantity: Integer = (istQuantity - purchase.quantity) stored;
   purchase: Association to Purchases;
   product: Association to Products;
+  ConfirmedQuantity: Integer;
 }
 
 @assert.unique: { token: [token] }
