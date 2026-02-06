@@ -8,7 +8,9 @@ service accessPageInternalSrv {
   entity Products as projection on my.Products;
   entity Purchases as projection on my.Purchases;
   entity Mangel as projection on my.Mangel;
-  entity PurchaseTokens as projection on my.PurchaseTokens;
+  entity Order as projection on my.Order;
+  entity Delivery as projection on my.Delivery;
+  entity Tokens as projection on my.Tokens;
 }
 
 @path: '/service/accessPageExternal'
@@ -35,14 +37,11 @@ service accessPageExternalSrv {
     ConfirmedQuantity
   };
 
-  entity PurchaseTokens as projection on my.PurchaseTokens {
+  entity Tokens as projection on my.Tokens {
     token,
     expires_at,
     revoked,
-    confirmed,
-    linkUsed,
-    created_on,
-    created_by
+    linkUsed
   };
 }
 
