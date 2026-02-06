@@ -29,12 +29,10 @@ entity Products : cuid {
 
 @assert.unique: { purchaseId: [purchaseId] }
 entity Purchases : cuid {
-  purchaseId: Association to Order @mandatory;
+  orderId: Association to Order @mandatory;
   quantity: Integer;
   date: Date;
   product: Association to Products;
-  buyer: Association to Buyers;
-  seller: Association to Sellers;
 }
 
 entity Mangel : cuid {
@@ -46,8 +44,9 @@ entity Mangel : cuid {
 }
 
 entity Order : cuid {
-  created_by: Association to Buyers;
+  buyer: Association to Buyers;
   created_on: DateTime;
+  seller: Association to Sellers;
   sellerConfirmed: Boolean;
 }
 
@@ -63,5 +62,6 @@ entity Tokens : cuid {
   orderID: Association to Order;
   expires_at: DateTime;
   revoked: Boolean;
-  linkUsed: Boolean;
+  lastUsed_at: DateTime;
+  linkInUse: Boolean;
 }

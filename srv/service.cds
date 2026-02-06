@@ -41,7 +41,8 @@ service accessPageExternalSrv {
     token,
     expires_at,
     revoked,
-    linkUsed
+    lastUsed_at,
+    linkInUse
   };
 }
 
