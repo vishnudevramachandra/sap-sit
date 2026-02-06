@@ -39,6 +39,7 @@ service accessPageExternalSrv {
     token,
     expires_at,
     revoked,
+    confirmed,
     created_on,
     created_by
   };

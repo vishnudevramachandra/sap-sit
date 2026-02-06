@@ -50,6 +50,7 @@ entity PurchaseTokens : cuid {
   token: String(100) @mandatory;
   expires_at: DateTime;
   revoked: Boolean;
+  confirmed: Boolean;
   created_on: DateTime;
   created_by: Association to Buyers;
 }
