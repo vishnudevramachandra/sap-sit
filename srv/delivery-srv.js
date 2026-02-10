@@ -5,7 +5,7 @@ const nodemailer = require("nodemailer");
 const fs = require("fs");
 const path = require("path");
 require("dotenv").config();
-const { generatePublicUrl } = require('./deliveryPublicURL-srv');
+const { generatePublicUrl } = require("./deliveryPublicURL-srv");
 
 module.exports = cds.service.impl(function () {
   // Gmail transporter configuration
@@ -63,6 +63,21 @@ module.exports = cds.service.impl(function () {
       );
       if (!order) return req.error(404, "Order not found.");
 
+      // fetch seller to get email (Order has seller association)
+      let recipientEmail;
+      const sellerId = order.seller_ID || (order.seller && order.seller.ID);
+      if (sellerId) {
+        const seller = await cds.run(
+          SELECT.one.from("AccessPage.Sellers").where({ ID: sellerId })
+        );
+        recipientEmail = seller && seller.email;
+      }
+      // final fallback
+      recipientEmail =
+        recipientEmail ||
+        order.recipientEmail ||
+        process.env.DEFAULT_RECIPIENT;
+
       // generate a token
       const token = crypto.randomBytes(16).toString("hex");
       const expires = new Date(Date.now() + 42 * 60 * 60 * 1000); // 42 hours
@@ -91,10 +106,10 @@ module.exports = cds.service.impl(function () {
       const verifyUrl = `${protocol}://${host}/service/accessPageExternal/verifyToken?token=${token}`;
 
       // Send email using template
+
+      // change Email Headder
       const emailSubject = `Delivery Verification Link - Order ${orderID}`;
       const emailHtml = loadEmailTemplate(orderID, verifyUrl);
-      const recipientEmail =
-        order.recipientEmail || "phofmann200@gmail.com";
 
       const emailResult = await sendEmail(
         recipientEmail,

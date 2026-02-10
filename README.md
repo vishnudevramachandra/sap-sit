@@ -27,12 +27,17 @@ npm install nodemailer
 
 npm install nodemailer dotenv
 
-
 Test emails
 
 cds serve all --with-mocks --in-memory
 
 
+see Process:
+sudo lsof -i :4004
+
+kill running process 
+
+sudo fuser -k 4004/tcp
 
 curl-XPOSThttp://localhost:4004/service/delivery/linkGeneration\
 
