@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Supplier Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100">
+    <div class="min-h-screen py-8">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Header -->
+        <div class="bg-white shadow rounded-lg p-6 mb-6">
+          <h1 class="text-3xl font-bold text-gray-900">Supplier Page</h1>
+          <h2 class="text-xl text-gray-700 mt-2">Müller & Co.</h2>
+        </div>
+
+        <!-- Documents Section -->
+        <div class="bg-white shadow rounded-lg p-6">
+          <h3 class="text-lg font-semibold text-gray-900 mb-4">Documents</h3>
+          <table class="min-w-full divide-y divide-gray-300">
+            <thead class="bg-gray-100">
+              <tr>
+                <th class="px-4 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">File Name</th>
+                <th class="px-4 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">File Type</th>
+                <th class="px-4 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">Created At</th>
+                <th class="px-4 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">Order ID</th>
+                <th class="px-4 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">Status</th>
+              </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200">
+              <tr class="hover:bg-gray-50 cursor-pointer" onclick="toggleDocAccordion(this, 'doc-001')">
+                <td class="px-4 py-3 text-sm text-gray-900">invoice_2026_001.pdf</td>
+                <td class="px-4 py-3 text-sm text-gray-600">PDF</td>
+                <td class="px-4 py-3 text-sm text-gray-600">01.02.2026 14:23</td>
+                <td class="px-4 py-3 text-sm text-gray-600">ORD-101</td>
+                <td class="px-4 py-3 text-sm flex items-center justify-between">
+                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">Approved</span>
+                  <svg class="doc-arrow-icon h-5 w-5 text-gray-400 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+                  </svg>
+                </td>
+              </tr>
+              <tr id="doc-001" class="hidden">
+                <td colspan="5" class="px-4 py-4">
+                  <div class="bg-gray-50 rounded-lg p-4">
+                    <h4 class="text-md font-semibold text-gray-900 mb-3">Admin Comment</h4>
+                    <p class="text-sm text-gray-700">Document has been reviewed and approved. All information is correct.</p>
+                  </div>
+                </td>
+              </tr>
+
+              <tr class="hover:bg-gray-50 cursor-pointer" onclick="toggleDocAccordion(this, 'doc-002')">
+                <td class="px-4 py-3 text-sm text-gray-900">delivery_note_001.pdf</td>
+                <td class="px-4 py-3 text-sm text-gray-600">PDF</td>
+                <td class="px-4 py-3 text-sm text-gray-600">31.01.2026 09:15</td>
+                <td class="px-4 py-3 text-sm text-gray-600">ORD-102</td>
+                <td class="px-4 py-3 text-sm flex items-center justify-between">
+                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">Pending</span>
+                  <svg class="doc-arrow-icon h-5 w-5 text-gray-400 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+                  </svg>
+                </td>
+              </tr>
+              <tr id="doc-002" class="hidden">
+                <td colspan="5" class="px-4 py-4">
+                  <div class="bg-gray-50 rounded-lg p-4">
+                    <h4 class="text-md font-semibold text-gray-900 mb-3">Admin Comment</h4>
+                    <p class="text-sm text-gray-700">No comment</p>
+                  </div>
+                </td>
+              </tr>
+
+              <tr class="hover:bg-gray-50 cursor-pointer" onclick="toggleDocAccordion(this, 'doc-003')">
+                <td class="px-4 py-3 text-sm text-gray-900">image_001.jpg</td>
+                <td class="px-4 py-3 text-sm text-gray-600">JPG</td>
+                <td class="px-4 py-3 text-sm text-gray-600">30.01.2026 08:00</td>
+                <td class="px-4 py-3 text-sm text-gray-600">ORD-103</td>
+                <td class="px-4 py-3 text-sm flex items-center justify-between">
+                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-100 text-orange-800">Edit</span>
+                  <svg class="doc-arrow-icon h-5 w-5 text-gray-400 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+                  </svg>
+                </td>
+              </tr>
+              <tr id="doc-003" class="hidden">
+                <td colspan="5" class="px-4 py-4">
+                  <div class="bg-gray-50 rounded-lg p-4">
+                    <h4 class="text-md font-semibold text-gray-900 mb-3">Admin Comment</h4>
+                    <p class="text-sm text-gray-700">Please provide a higher resolution image. Current image is too blurry for verification.</p>
+                  </div>
+                </td>
+              </tr>
+
+              <tr class="hover:bg-gray-50 cursor-pointer" onclick="toggleDocAccordion(this, 'doc-004')">
+                <td class="px-4 py-3 text-sm text-gray-900">contract_2026.pdf</td>
+                <td class="px-4 py-3 text-sm text-gray-600">PDF</td>
+                <td class="px-4 py-3 text-sm text-gray-600">25.01.2026 11:20</td>
+                <td class="px-4 py-3 text-sm text-gray-600">ORD-104</td>
+                <td class="px-4 py-3 text-sm flex items-center justify-between">
+                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">Approved</span>
+                  <svg class="doc-arrow-icon h-5 w-5 text-gray-400 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+                  </svg>
+                </td>
+              </tr>
+              <tr id="doc-004" class="hidden">
+                <td colspan="5" class="px-4 py-4">
+                  <div class="bg-gray-50 rounded-lg p-4">
+                    <h4 class="text-md font-semibold text-gray-900 mb-3">Admin Comment</h4>
+                    <p class="text-sm text-gray-700">Contract is valid. Signature verified. All terms are acceptable.</p>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+
+    <script>
+      const API_BASE = "http://localhost:4004";
+
+      // Toggle document accordion
+      function toggleDocAccordion(row, accordionId) {
+        const accordionRow = document.getElementById(accordionId);
+        const arrow = row.querySelector('.doc-arrow-icon');
+        
+        // Close all other accordions and reset their arrows
+        document.querySelectorAll('tbody tr[id]').forEach(el => {
+          if (el.id !== accordionId) {
+            el.classList.add('hidden');
+            const prevRow = el.previousElementSibling;
+            if (prevRow) {
+              const arrowIcon = prevRow.querySelector('.doc-arrow-icon');
+              if (arrowIcon) {
+                arrowIcon.style.transform = 'rotate(0deg)';
+              }
+            }
+          }
+        });
+        
+        // Toggle current accordion
+        accordionRow.classList.toggle('hidden');
+        
+        // Rotate arrow
+        if (accordionRow.classList.contains('hidden')) {
+          arrow.style.transform = 'rotate(0deg)';
+        } else {
+          arrow.style.transform = 'rotate(180deg)';
+        }
+      }
+    </script>
+  </body>
+</html>
